@@ -11,11 +11,11 @@ the GPL2 ("Copyleft").
 
 #include <Arduino.h>
 #include <Wire.h>
+
 #include "AD8318.h"
 
-String inString = "";
-unsigned int delayUs = 200;
-AD8318 sensor();
+AD8318 sensor;
+int sensorAnlogPin = 0;
 
 void setup()
 {
@@ -25,19 +25,11 @@ void setup()
 
 void loop()
 {
-    if(Serial.available())
-    {
-        int inChar = Serial.read();
+    static int analogValue = 0;
+    analogValue = analogRead(sensorAnlogPin);
+    Value val = sensor.GetValue_dBm(analogValue);
+    Serial.print(val.GetValue());
+    Serial.println(" dBm");
 
-        if (inChar != '\n')
-        {
-            inString += (char)inChar;
-        }
-        else
-        {
-            inString = "";
-        }
-
-    }
-    delayMicroseconds(delayUs);
+    delay(500);
 }

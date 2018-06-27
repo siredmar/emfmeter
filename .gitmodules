@@ -1,0 +1,3 @@
+[submodule "lib/AD8318"]
+	path = lib/AD8318
+	url = https://github.com/siredmar/AD8318.git

@@ -11,11 +11,20 @@ the GPL2 ("Copyleft").
 
 #include <Arduino.h>
 #include <Wire.h>
+#include <Display.h>
 
 #include "AD8318.h"
 
 AD8318 sensor;
 int sensorAnlogPin = 0;
+int LcdRs = 1;
+int LcdEnable = 2;
+int LcdD4 = 3;
+int LcdD5 = 4;
+int LcdD6 = 5;
+int LcdD7 = 6;
+
+Display lcd(LcdRs, LcdEnable, LcdD4, LcdD5, LcdD6, LcdD7, 16, 2);
 
 void setup()
 {
